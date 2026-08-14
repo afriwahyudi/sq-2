@@ -250,13 +250,9 @@ with status_col4:
     st.metric("det(J)", f"{np.linalg.det(J_values):.4g}")
 
 if gd_satisfied:
-    st.success(
-        f"Gibbs-Duhem is satisfied: all vⱼ are equal (v_j = {v_values[-1]:.4f}). "
-        + ("This is also the trivial case v_j = 0." if abs(v_values[-1]) < 1e-10
-           else "Note v_j ≠ 0, which is still fully consistent.")
-    )
+    st.success(f"Gibbs-Duhem is satisfied: all vⱼ are equal (v_j = {v_values[-1]:.4f}).")
 else:
-    st.error("Gibbs-Duhem is violated: the vⱼ are not equal.")
+    st.error(f"Gibbs-Duhem is violated: the vⱼ are not equal. (v_j = {v_values[-1]:.4f})")
 
 # =================================================================
 tab_labels = ["Activity coefficient", "Jacobian", "Consistency coefficient", "Tangent test", "Bar chart"]
